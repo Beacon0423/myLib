@@ -14,6 +14,7 @@ import com.example.alarmdemo.service.AlarmService
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     @SuppressLint("ShortAlarm")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +34,15 @@ class MainActivity : AppCompatActivity() {
         click()
     }
 
-    private fun click(){
-        val input = binding.edt.text.toString().trim()
-        if (input.isNotEmpty()) {
-            val intent = Intent(this, AlarmService::class.java)
-            intent.putExtra("time", input.toInt())
-            startService(intent)
+    private fun click() {
+        binding.btn.setOnClickListener {
+            val input = binding.edt.text.toString().trim()
+            if (input.isNotEmpty()) {
+                val intent = Intent(this, AlarmService::class.java)
+                intent.putExtra("time", input.toInt())
+                startService(intent)
+            }
         }
+
     }
 }
