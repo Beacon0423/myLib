@@ -1,17 +1,13 @@
 package com.example.alarmdemo
 
 import android.annotation.SuppressLint
-import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.SystemClock
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
-import com.example.alarmdemo.receiver.AutoReceiver
+import com.example.alarmdemo.receiver.AlarmReceiver
 import com.example.alarmdemo.service.AlarmService
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(channel)
 
-        val receiver = AutoReceiver()
+        val receiver = AlarmReceiver()
         val filter = IntentFilter()
         filter.addAction("toAlarmReceiver")
         registerReceiver(receiver, filter)

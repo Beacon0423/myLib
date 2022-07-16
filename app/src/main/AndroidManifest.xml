@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <service android:name=".service.AlarmService"/>
-        <receiver android:name=".receiver.AutoReceiver"/>
+        <receiver android:name=".receiver.AlarmReceiver"/>
     </application>
 
 </manifest>

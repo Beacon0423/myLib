@@ -8,7 +8,7 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.alarmdemo.R
 
-class AutoReceiver : BroadcastReceiver() {
+class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Log.i("test1", "onReceive: ")
         val notify = NotificationCompat.Builder(context, "xxm")

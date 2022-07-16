@@ -20,7 +20,7 @@ class AlarmService : Service() {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val i = Intent("toAlarmReceiver")
-        Log.i("test1", "onStartCommand: $packageName, $packageName.receiver.AutoReceiver")
+        Log.i("test1", "onStartCommand: $packageName, $packageName.receiver.AlarmReceiver")
         i.component = ComponentName(packageName, "$packageName.receiver.AutoReceiver")
         val pendingIntent =
             PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT)
