@@ -21,16 +21,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //注册NotificationChannel，Android8之后需要，可根据自己选择
         val channel = NotificationChannel("xxm", "通知", NotificationManager.IMPORTANCE_HIGH)
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(channel)
-        //动态注册BroadcastReceiver
+
         val receiver = AlarmReceiver()
         val filter = IntentFilter()
         filter.addAction("toAlarmReceiver")
         registerReceiver(receiver, filter)
-        //点击函数
+
         click()
     }
 
