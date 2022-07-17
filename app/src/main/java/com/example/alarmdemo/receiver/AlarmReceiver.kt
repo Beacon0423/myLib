@@ -13,8 +13,7 @@ class AlarmReceiver : BroadcastReceiver() {
         Log.i("test1", "onReceive: ")
         val notify = NotificationCompat.Builder(context, "xxm")
             .setSmallIcon(R.mipmap.ic_launcher_round)
-     //       .setTicker("TickerText: 有信息，有信息！！")
-            .setContentTitle("标题")
+            .setContentTitle(intent.getStringExtra("title"))
             .setContentText("看通知，看通知哦！").build()
         val manager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
