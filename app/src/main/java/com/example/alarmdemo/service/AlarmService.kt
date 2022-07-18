@@ -9,39 +9,40 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
+import com.example.alarmdemo.CreateAlarm
 
 
 class AlarmService : Service() {
-    private lateinit var manager: AlarmManager
-    private lateinit var pendingIntent: PendingIntent
+    private var manager: AlarmManager? = null
+    private var pendingIntent: PendingIntent? = null
     override fun onBind(p0: Intent?): IBinder? {
         return null
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val i = Intent("toAlarmReceiver")
-        i.putExtra("title", intent.getIntExtra("time", 0).toString())
-        Log.i("test1", "onStartCommand: $packageName, $packageName.receiver.AlarmReceiver")
-        i.component = ComponentName(packageName, "$packageName.receiver.AlarmReceiver")
-        pendingIntent =
-            PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT)
-        val time = intent.getIntExtra("time", 0)
-        manager.setAndAllowWhileIdle(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis() + time * 1000L,
-            pendingIntent
-        )
+        if (intent != null) {
+            Log.i("test1", "startID: $startId")
+            val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//            if (startId > 1) {
+//                manager.cancel(CreateAlarm.createPending(this, intent, startId-1))
+//            }
+            pendingIntent = CreateAlarm.createPending(this, intent, startId)
+            val time = intent.getIntExtra("time", 0)
+            manager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                System.currentTimeMillis() + time * 1000L,
+                60*1000L,
+                pendingIntent
+            )
+        }
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
+        Log.e("test1", "onDestroy: ")
         super.onDestroy()
-        val list: ArrayList<PendingIntent> = arrayListOf()
 
-        manager.cancel(pendingIntent)
-        Log.i("test1", "onDestroy: ")
     }
 }
