@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "AlarmDemo"
+rootProject.name = "mylibrary"
 include ':app'
 include ':mylibrary'
