@@ -23,12 +23,12 @@ class AlarmService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         if (intent != null) {
-            Log.i("test1", "startID: $startId")
+            Log.e("test1", "startID: $startId")
             val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 //            if (startId > 1) {
 //                manager.cancel(CreateAlarm.createPending(this, intent, startId-1))
 //            }
-            pendingIntent = CreateAlarm.createPending(this, intent, startId)
+            pendingIntent = CreateAlarm.createPending(this, intent, 0)
             val time = intent.getIntExtra("time", 0)
             manager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
