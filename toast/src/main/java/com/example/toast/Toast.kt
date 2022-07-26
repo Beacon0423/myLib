@@ -6,7 +6,7 @@ import android.widget.Toast
 /**
  * @author May 2022.07.23
  */
-class Toast {
+object Toast {
     /**
      * 短时间输出Toast
      * @param msg 输出的信息
