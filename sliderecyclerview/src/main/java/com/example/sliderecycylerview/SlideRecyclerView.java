@@ -1,4 +1,4 @@
-package com.example.mylibrary.customviews;
+package com.example.sliderecycylerview;
 
 import android.content.Context;
 import android.graphics.Rect;
