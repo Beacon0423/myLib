@@ -16,3 +16,4 @@ rootProject.name = "mylibrary"
 include ':app'
 include ':sliderecyclerview'
 include ':toast'
+include ':tools'
