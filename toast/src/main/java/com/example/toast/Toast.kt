@@ -11,6 +11,7 @@ object Toast {
      * 短时间输出Toast
      * @param msg 输出的信息
      */
+    @JvmStatic
     fun ptShort(content: Context, msg: CharSequence){
         Toast.makeText(content, msg, Toast.LENGTH_SHORT).show()
     }
@@ -19,6 +20,7 @@ object Toast {
      * 长间输出Toast
      * @param msg 输出的信息
      */
+    @JvmStatic
     fun ptLong(content: Context, msg: CharSequence){
         Toast.makeText(content, msg, Toast.LENGTH_LONG).show()
     }

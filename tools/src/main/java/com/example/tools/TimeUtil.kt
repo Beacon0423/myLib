@@ -19,6 +19,7 @@ object TimeUtil {
      *
      * @return 返回Long型 单位秒
      * */
+    @JvmStatic
     fun cycToTime(input: Int, num: Int): Long {
         return when (num) {
             0 -> input * 3600 * 24L
@@ -28,7 +29,7 @@ object TimeUtil {
             else -> 0L
         }
     }
-
+    @JvmStatic
     fun dateDisplay(date: String): String {
         if (date.length != 6) return ""
         return if (date[2] == '0') {
@@ -45,7 +46,7 @@ object TimeUtil {
             }
         }
     }
-
+    @JvmStatic
     fun cycToNumber(cyc: String): ArrayList<Int>? {
         val list = ArrayList<Int>()
         val num = cyc.substring(0, cyc.length - 1)
@@ -73,6 +74,7 @@ object TimeUtil {
     /**
      * 将HH:mm格式的时间转为Int数据类型
      * */
+    @JvmStatic
     fun timeToNumber(time: String): Int {
         if (time.length != 5) return 0
         val res = time.substring(0, 2) + time.substring(3, 5)
@@ -82,6 +84,7 @@ object TimeUtil {
     /**
      * 获取当前时间，格式为HH:mm
      * */
+    @JvmStatic
     fun getNowTime(): String {
         val timeFormat = SimpleDateFormat("HH:mm", Locale.CHINA)
         return timeFormat.format(Calendar.getInstance().time)
@@ -90,6 +93,7 @@ object TimeUtil {
     /**
      * 获取当前日期，格式为ArrayList<Int>
      * */
+    @JvmStatic
     fun getNowDate(): ArrayList<Int> {
         val list = ArrayList<Int>()
         val c = Calendar.getInstance()
@@ -102,6 +106,7 @@ object TimeUtil {
     /**
      * 获取两个时间的间隔,返回天数
      * */
+    @JvmStatic
     fun getSpacingDate(from: Date, to: Date): Int {
         val cFrom = Calendar.getInstance()
         cFrom.let {
@@ -126,6 +131,7 @@ object TimeUtil {
     /**
      * 获取距离下一次提醒的时间,return 单位s,Long型
      * */
+    @JvmStatic
     fun getNextTime(days: Int, hour: Int, min: Int, cycTime: Long): Long {
         val h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val m = Calendar.getInstance().get(Calendar.MINUTE)
@@ -144,6 +150,7 @@ object TimeUtil {
     /**
      * @param date 格式为yyMMdd
      * */
+    @JvmStatic
     fun stringToDate(date: String): Date {
         val yy = "20${date.substring(0, 2)}".toInt()
         val mm = date.substring(2, 4).toInt()
@@ -162,6 +169,7 @@ object TimeUtil {
     /**
      * 日期格式切换,yyyy-MM-dd<-->yyMMdd
      * */
+    @JvmStatic
     fun dateFormat(date: String): String {
         return when (date.length) {
             10 -> {
