@@ -14,4 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "mylibrary"
 include ':app'
-include ':mylibrary'
+include ':sliderecyclerview'
+include ':toast'
